@@ -1,11 +1,18 @@
 # Authopless
 
+> authentification au top passwordless !
+
 Projet démo d'authentification par mot de passe et/ou passkeys.
 
 ## Liens utiles
 
 - https://webauthn-doc.spomky-labs.com/
 - https://github.com/web-auth/webauthn-symfony-bundle
+
+
+## Prérequis
+
+[ ] PHP8
 
 
 ## Installation
