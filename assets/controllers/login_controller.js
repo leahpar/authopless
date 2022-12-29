@@ -17,7 +17,7 @@ export default class extends Controller {
 
         // We can call this login function whenever we need (e.g. form submission)
         login({
-            username: this.inputEmailTarget.value,
+            username: "xxx", //this.inputEmailTarget.value,
         })
             .then(
                 (response) => window.location.href = '/'

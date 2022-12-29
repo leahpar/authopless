@@ -14,9 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends AbstractController
 {
 
-
     #[Route('/', name: 'index')]
-    public function test(
+    public function profile(
         PublicKeyCredentialUserEntityRepository $publicKeyCredentialUserEntityRepository,
         PublicKeyCredentialSourceRepository $publicKeyCredentialSourceRepo)
     {
@@ -30,15 +29,6 @@ class TestController extends AbstractController
         return $this->render('test/index.html.twig', [
             'keys' => $keys,
         ]);
-    }
-
-    #[Route('/profile/security/devices/{id}/del', name: 'del_device')]
-    public function del(Request $request, PublicKeyCredentialSourceRepository $publicKeyCredentialSourceRepo)
-    {
-        $key = $publicKeyCredentialSourceRepo->findOneById($request->get('id'));
-        $publicKeyCredentialSourceRepo->remove($key);
-
-        return $this->redirectToRoute('index');
     }
 
 }

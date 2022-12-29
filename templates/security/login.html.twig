@@ -6,14 +6,6 @@
         <h1>Connexion</h1>
         <div>
             <form method="post">
-                <input {{ stimulus_target('login', 'inputEmail') }}
-                        type="email"
-                        name="_username"
-                        value="{{ last_username }}"
-                        required
-                        placeholder="Email">
-
-                <hr>
 
                 <button type="button"
                         {{ stimulus_action('login', 'login') }}>
@@ -25,6 +17,12 @@
 
                 <span class="sep"> ou </span>
 
+                <input {{ stimulus_target('login', 'inputEmail') }}
+                        type="email"
+                        name="_username"
+                        value="{{ last_username }}"
+                        required
+                        placeholder="Email">
                 <input type="password"
                        name="_password"
                        placeholder="Mot de passe"

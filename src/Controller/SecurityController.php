@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\PublicKeyCredentialSourceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -78,6 +79,15 @@ class SecurityController extends AbstractController
     public function logout()
     {
         // controller can be blank: it will never be executed!
+    }
+
+    #[Route('/profile/security/devices/{id}/del', name: 'del_device')]
+    public function del(Request $request, PublicKeyCredentialSourceRepository $publicKeyCredentialSourceRepo)
+    {
+        $key = $publicKeyCredentialSourceRepo->findOneById($request->get('id'));
+        $publicKeyCredentialSourceRepo->remove($key);
+
+        return $this->redirectToRoute('index');
     }
 
 }
