@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Utilisateur</h1>
+    <form>
+        <pre>{{ app.user.displayName }}</pre>
+        <pre>{{ app.user.username }}</pre>
+
+        <h2>Clés</h2>
+        {% for key in keys %}
+            <div class="keys">
+                <span>
+                    {{ key.createdAt|date('Y-m-d H:i') }}
+                    |
+                    {{ key.id }}
+                </span>
+                <a href="{{ path('del_device', {id: key.id}) }}">❌</a>
+            </div>
+        {% else %}
+            Aucune clé enregistrée
+        {% endfor %}
+
+        <div {{ stimulus_controller('add_device') }}>
+            <button {{ stimulus_action('add_device', 'register') }} type="button">Ajouter une passkey</button>
+            <p {{ stimulus_target('add_device', 'message') }}></p>
+        </div>
+
+    </form>
+
+
+{% endblock body %}
+

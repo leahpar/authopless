@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div {{ stimulus_controller('register') }}>
+
+    <h1>Inscription</h1>
+    <div>
+        <form method="post">
+            <input {{ stimulus_target('register', 'inputEmail') }}
+                    type="email"
+                    name="registration_form[username]"
+                    placeholder="Email"
+                    value="{{ form.username.vars.value }}"
+                    required>
+            <br>
+            <input {{ stimulus_target('register', 'inputName') }}
+                    type="text"
+                    name="registration_form[displayName]"
+                    placeholder="Nom"
+                    value="{{ form.displayName.vars.value }}"
+                    required>
+
+            <hr>
+
+            <button {{ stimulus_action('register', 'register') }}
+                    type="button">
+                Inscription PassKey
+            </button>
+            <br>
+            <p {{ stimulus_target('register', 'message') }}></p>
+
+            <span class="sep"> ou </span>
+
+            <input type="password"
+                   name="registration_form[plainPassword]"
+                   placeholder="Mot de passe"
+                   required>
+            <button type="submit">Inscription par mot de passe</button>
+            {{ form_widget(form._token) }}
+            <p>{{ form_errors(form) }}</p>
+
+            <hr>
+        </form>
+    </div>
+
+
+</div>
+{% endblock body %}

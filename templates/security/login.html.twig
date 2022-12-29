@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div {{ stimulus_controller('login') }}>
+
+        <h1>Connexion</h1>
+        <div>
+            <form method="post">
+                <input {{ stimulus_target('login', 'inputEmail') }}
+                        type="email"
+                        name="_username"
+                        value="{{ last_username }}"
+                        required
+                        placeholder="Email">
+
+                <hr>
+
+                <button type="button"
+                        {{ stimulus_action('login', 'login') }}>
+                    Connexion PassKey
+                </button>
+                <br>
+                <p class="error"
+                   {{ stimulus_target('login', 'message') }}></p>
+
+                <span class="sep"> ou </span>
+
+                <input type="password"
+                       name="_password"
+                       placeholder="Mot de passe"
+                       required>
+                <br>
+                {% if error %}
+                    <p class="error">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </p>
+                {% endif %}
+                <button type="submit">
+                    Connexion par mot de passe
+                </button>
+
+            </form>
+        </div>
+
+
+
+    </div>
+{% endblock body %}
