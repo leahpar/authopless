@@ -39,6 +39,16 @@ RELAYING_PARTY_NAME="My Application"
 composer install
 ```
 
+```php
+# \vendor\web-auth\webauthn-symfony-bundle\src\Repository\PublicKeyCredentialSourceRepository.php
+# line 17
+
+# Replace :
+private readonly EntityManagerInterface $manager;
+# With :
+protected readonly EntityManagerInterface $manager;
+```
+
 ```bash
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --dump-sql
